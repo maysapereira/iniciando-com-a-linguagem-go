@@ -1,13 +1,14 @@
 package main
 
 import "fmt"
+import "os"
 
 func main() {
 
     exibeIntroducao()
 
     exibeMenu()
-    
+
     comando := leComando()
 
     switch comando {
@@ -17,8 +18,10 @@ func main() {
             fmt.Println("Exibindo logs...")
         case 0:
             fmt.Println("Saindo do programa...")
+            os.Exit(0)
         default:
             fmt.Println("Escolha uma das opções válidas")
+            os.Exit(-1) //caso dê erro ao sair do programa
     }
 }
 
