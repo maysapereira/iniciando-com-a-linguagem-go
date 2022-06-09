@@ -3,18 +3,12 @@ package main
 import "fmt"
 
 func main() {
-    nome := "Maysa"
-    versao := 1.1
-    fmt.Println("Olá, sra.", nome)
-    fmt.Println("Este programa está na versão", versao)
 
-    fmt.Println("1- Iniciar monitoramento")
-    fmt.Println("2- Exibir logs")
-    fmt.Println("0- Sair do programa")
+    exibeIntroducao()
 
-    var comando int
-    fmt.Scan(&comando)
-    fmt.Println("O comando escolhido foi o", comando)
+    exibeMenu()
+    
+    comando := leComando()
 
     switch comando {
         case 1:
@@ -26,4 +20,25 @@ func main() {
         default:
             fmt.Println("Escolha uma das opções válidas")
     }
+}
+
+func exibeIntroducao() {
+    nome := "Maysa"
+    versao := 1.1
+    fmt.Println("Olá, sra.", nome)
+    fmt.Println("Este programa está na versão", versao)
+}
+
+func exibeMenu() {
+    fmt.Println("1- Iniciar monitoramento")
+    fmt.Println("2- Exibir logs")
+    fmt.Println("0- Sair do programa")
+}
+
+func leComando() int {
+    var comando int
+    fmt.Scan(&comando)
+    fmt.Println("O comando escolhido foi o", comando)
+
+    return comando
 }
