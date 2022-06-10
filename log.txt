@@ -1,0 +1,4 @@
+https://go.dev - online: true
+https://pagar.me - online: true
+https://www.stone.com.br - online: true
+https://github.com/maysapereira - online: true

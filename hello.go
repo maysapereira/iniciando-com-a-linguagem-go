@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
-import "os"
-import "net/http"
-import "time"
+import (
+	"fmt"
+	"net/http"
+	"os"
+	"strconv"
+	"time"
+)
 
 const monitoramentos = 3
 const delay = 5
@@ -71,9 +74,6 @@ func iniciaMonitoramento() {
 
     sites:= []string {"https://go.dev", "https://pagar.me", "https://www.stone.com.br", "https://github.com/maysapereira"}
     
-    // for i :=0; i <len(site); i++ {
-    // }
-
 
 for i := 0; i <monitoramentos; i++ {
     for i, site := range sites {
@@ -94,12 +94,29 @@ func testaSites(site string) {
 
     if resp.StatusCode == 200 {
         fmt.Println("Site:", site, "foi carregado com sucesso!")
+        registraLogs(site, true)
     } else {
         fmt.Println("Site:", site, "está com problemas. Status Code:")
+        registraLogs(site, false)
     }
 
     if err != nil {
         fmt.Println("Ocorreu um erro:", err)
     }
 
+}
+
+func registraLogs(site string, status bool) {
+
+    arquivo, err := os.OpenFile("log.txt", os.O_CREATE | os.O_RDWR | os.O_APPEND, 0666)
+
+    if err != nil {
+        fmt.Println("Ocorreu um erro:", err)
+    }
+
+    fmt.Println(arquivo)
+
+    arquivo.WriteString(site + " - online: " + strconv.FormatBool(status) + "\n")
+
+    arquivo.Close()
 }
