@@ -49,7 +49,13 @@ func leComando() int {
 
 func iniciaMonitoramento() {
     fmt.Println("Iniciando monitoramento...")
-    site := "https://go.dev/"
+    site := "https://random-status-code.herokuapp.com/"
     resp, _ := http.Get(site)
-    fmt.Print(resp)
+    fmt.Println(resp)
+
+    if resp.StatusCode == 200 {
+        fmt.Println("Site:", site, "foi carregado com sucesso!")
+    } else {
+        fmt.Println("Site:", site, "está com problemas. Status Code:")
+    }
 }
