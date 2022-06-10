@@ -5,6 +5,9 @@ import "os"
 import "net/http"
 import "time"
 
+const monitoramentos = 3
+const delay = 5
+
 func main() {
 
     exibeIntroducao()
@@ -72,14 +75,14 @@ func iniciaMonitoramento() {
     // }
 
 
-for i := 0; i <5; i++ {
+for i := 0; i <monitoramentos; i++ {
     for i, site := range sites {
         fmt.Println("Testando site", i, ":", site)
         testaSites(site)
         fmt.Println("")
     }
 
-    time.Sleep(5 * time.Minute)
+    time.Sleep(delay * time.Minute)
 }
 
     fmt.Println("")
