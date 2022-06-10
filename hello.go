@@ -8,27 +8,31 @@ func main() {
 
     exibeIntroducao()
 
-    exibeMenu()
+    for {
 
-    comando := leComando()
+        exibeMenu()
 
-    switch comando {
-        case 1:
-            iniciaMonitoramento()
-        case 2:
-            fmt.Println("Exibindo logs...")
-        case 0:
-            fmt.Println("Saindo do programa...")
-            os.Exit(0)
-        default:
-            fmt.Println("Escolha uma das opções válidas")
-            os.Exit(-1) //caso dê erro ao sair do programa
+        comando := leComando()
+
+        switch comando {
+            case 1:
+                iniciaMonitoramento()
+            case 2:
+                fmt.Println("Exibindo logs...")
+            case 0:
+                fmt.Println("Saindo do programa...")
+                os.Exit(0)
+            default:
+                fmt.Println("Escolha uma das opções válidas")
+                os.Exit(-1)
+    }
+
     }
 }
 
 func exibeIntroducao() {
     nome := "Maysa"
-    versao := 1.1
+    versao := 1.2
     fmt.Println("Olá, sra.", nome)
     fmt.Println("Este programa está na versão", versao)
 }
