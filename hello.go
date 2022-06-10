@@ -3,6 +3,7 @@ package main
 import "fmt"
 import "os"
 import "net/http"
+import "time"
 
 func main() {
 
@@ -70,11 +71,16 @@ func iniciaMonitoramento() {
     // for i :=0; i <len(site); i++ {
     // }
 
+
+for i := 0; i <5; i++ {
     for i, site := range sites {
         fmt.Println("Testando site", i, ":", site)
         testaSites(site)
         fmt.Println("")
     }
+
+    time.Sleep(5 * time.Minute)
+}
 
     fmt.Println("")
 
