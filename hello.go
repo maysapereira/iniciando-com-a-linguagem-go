@@ -90,12 +90,16 @@ for i := 0; i <monitoramentos; i++ {
 }
 
 func testaSites(site string) {
-    resp, _ := http.Get(site)
+    resp, err := http.Get(site)
 
     if resp.StatusCode == 200 {
         fmt.Println("Site:", site, "foi carregado com sucesso!")
     } else {
         fmt.Println("Site:", site, "está com problemas. Status Code:")
+    }
+
+    if err != nil {
+        fmt.Println("Ocorreu um erro:", err)
     }
 
 }
