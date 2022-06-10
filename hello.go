@@ -32,15 +32,22 @@ func main() {
 
 func exibeIntroducao() {
     nome := "Maysa"
-    versao := 1.2
-    fmt.Println("Olá, sra.", nome)
+    versao := 1.3
+    fmt.Println("Olá", nome, "!")
+
+    fmt.Println("")
+
     fmt.Println("Este programa está na versão", versao)
+
+    fmt.Println("")
 }
 
 func exibeMenu() {
     fmt.Println("1- Iniciar monitoramento")
     fmt.Println("2- Exibir logs")
     fmt.Println("0- Sair do programa")
+
+    fmt.Println("")
 }
 
 func leComando() int {
@@ -52,14 +59,34 @@ func leComando() int {
 }
 
 func iniciaMonitoramento() {
+    fmt.Println("")
+
     fmt.Println("Iniciando monitoramento...")
-    site := "https://random-status-code.herokuapp.com/"
+
+    fmt.Println("")
+
+    sites:= []string {"https://go.dev", "https://pagar.me", "https://www.stone.com.br", "https://github.com/maysapereira"}
+    
+    // for i :=0; i <len(site); i++ {
+    // }
+
+    for i, site := range sites {
+        fmt.Println("Testando site", i, ":", site)
+        testaSites(site)
+        fmt.Println("")
+    }
+
+    fmt.Println("")
+
+}
+
+func testaSites(site string) {
     resp, _ := http.Get(site)
-    fmt.Println(resp)
 
     if resp.StatusCode == 200 {
         fmt.Println("Site:", site, "foi carregado com sucesso!")
     } else {
         fmt.Println("Site:", site, "está com problemas. Status Code:")
     }
+
 }
