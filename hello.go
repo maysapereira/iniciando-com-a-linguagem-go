@@ -41,7 +41,7 @@ func main() {
 
 func exibeIntroducao() {
     nome := "Maysa"
-    versao := 1.3
+    versao := 1.4
     fmt.Println("Olá", nome, "!")
 
     fmt.Println("")
